@@ -5,8 +5,8 @@ import {useCallback, useState} from "react";
 import ShipyardWindow from "./ShipyardWindow";
 
 function ShipStatus({shipId, status}) {
-  const [orbitShip] = useOrbitShipMutation()
-  const [dockShip] = useDockShipMutation()
+  const [orbitShip, {isLoading:isOrbiting}] = useOrbitShipMutation()
+  const [dockShip, {isLoading:isDocking}] = useDockShipMutation()
   
   const orbit = useCallback(() => {
     orbitShip({symbol: shipId})
@@ -24,8 +24,8 @@ function ShipStatus({shipId, status}) {
       <div className="items">
         <div>{status}</div>
       </div>
-      {status == 'DOCKED' && <Button onClick={orbit}>orbit</Button>}
-      {status == 'IN_ORBIT' && <Button onClick={dock}>dock</Button>}
+      {status == 'DOCKED' && <Button loading={isOrbiting} onClick={orbit}>orbit</Button>}
+      {status == 'IN_ORBIT' && <Button loading={isDocking} onClick={dock}>dock</Button>}
     </div>
   )
 }

@@ -7,17 +7,22 @@ import {TextField} from "../../lib/TextField"
 import Waypoint from "./Waypoint"
 import {Select} from "../../lib/select"
 import {traits, waypointTypes} from "../../consts"
+import {useWaypoints} from "../context/waypoints"
 
 export default function WaypointsWindow() {
   const {handle, data, errors} = useForm({})
   const {data: waypoints, isError} = useGetSystemWaypointsQuery({
     system: data.system,
     trait: data.trait,
-    type:data.type
+    type: data.type
   }, {
     skip: !data.system// || !data.traits
   })
   const [shown, setShown] = useState([])
+  const [contextWaypoints, setContextWaypoints] = useWaypoints()
+  const showOnMap = () => {
+    setContextWaypoints(waypoints?.data)
+  }
   return <>
     <DraggableWindow width={800} height={360} title={'waypoints'}>
       {/*JSON.stringify(contracts)*/}
@@ -29,6 +34,7 @@ export default function WaypointsWindow() {
           <Select label='trait' options={traits} name='trait' />
           <Select label='type' options={waypointTypes} name='type' />
         </div>
+        <Button onClick={showOnMap}>show</Button>
       </Form>
       {isError
         ? 'Not found'

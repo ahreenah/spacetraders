@@ -7,6 +7,8 @@ import WaypointsWindow from "../components/WaypointsWindow";
 import {useState} from "react";
 import useAuthRequired from "../hooks/useAuthRequired";
 import ShipsWindow from "../components/ShipsWindow";
+import SceneView from "../components/SceneView";
+import {WaypointsContext} from "../context/waypoints";
 
 export default function Main() {
   useAuthRequired()
@@ -18,8 +20,10 @@ export default function Main() {
     hqSystemSymbol = agent.data.headquarters.split('-')[0] + '-' + agent.data.headquarters.split('-')[1]
     hqWaypointSymbol = agent.data.headquarters// + '-' + agent.data.headquarters.split('-')[2]
   }
+  const [waypoints, setWaypoints] = useState([])
 
   return <>
+    <WaypointsContext.Provider value={[waypoints, setWaypoints]}>
     <header className='game-header'>
       <div className='right-buttons'>
         {agent && <>
@@ -39,5 +43,8 @@ export default function Main() {
     <WaypointsWindow />
     {shipsShown && <ShipsWindow />}
     {contractsShown && <ContractsWindow />}
+    <SceneView />
+
+    </WaypointsContext.Provider>
   </>
 }
