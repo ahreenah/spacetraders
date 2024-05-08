@@ -1,0 +1,242 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+:root{
+  --primary-dark: #202240;
+  --primary-medium: #9099BB;
+  --primary-light: #BBBBFF;
+  --secondary-dark: #402022;
+  --secondary-light: #FFBBBB;
+}
+.info-view{
+  background: var(--primary-dark);
+  color:var(--primary-light);
+  border:2px solid var(--primary-medium);
+  & .header{
+    & h2{
+      font-size:18px;
+      margin:0;
+      padding:0;
+      text-align:left;
+    }
+    padding: 10px;
+    border-bottom: 1px solid var(--primary-medium);
+  }
+  & .content{
+    padding: 10px;
+    & .props{
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+      & > *{
+        padding:5px;
+        background: var(--primary-light);
+        color:var(--primary-dark);
+        &.submitted{
+          margin-left:auto;
+          color: var(--secondary-dark);
+          background: var(--secondary-light);
+        }
+      }
+    }
+    & .construction{
+      text-align:left;
+      margin-top:10px;
+    }
+    & .orbitals{
+      margin-top:20px;
+      display:flex;
+      gap:10px;
+      &.with-action{
+        align-items:center;
+        & *{
+          height:fit-contentl
+        }
+      }
+      & .items{
+        display:flex;
+        flex-wrap:wrap;
+        gap:10px;
+        & div{
+          padding:0 8px;
+          color: var(--primary-dark);
+          background: var(--primary-light);
+        }
+      }
+    }
+  }
+}
+
+
+
+.traits{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  & h3{
+    margin:0;
+    text-align:left;
+    margin-top:10px;
+  }
+  & .trait{
+    text-align:left;
+    & .trait-title{
+      padding:0;
+      margin:0;
+    }
+    & .trait-description{
+
+    }
+  }
+}
+.draggable-window{
+  display:flex;
+  flex-direction:column;
+  position:fixed;
+  background:var(--primary-dark);
+  overflow-y:auto;
+  border:2px solid var(--primary-medium);
+  & .header{
+    & h2{
+      font-size:18px;
+      margin:0;
+      padding:0;
+      text-align:left;
+    }
+    cursor:move;
+    position:sticky;
+    top:0;
+    background: var(--primary-dark);
+    padding: 10px;
+    border-bottom: 1px solid var(--primary-medium);
+  }
+
+  & > .header{
+    height: 50px;
+    color:var(--primary-light);
+    width:100%;
+    display:flex;
+  }
+
+  & .content {
+    overflow-y:auto;
+    flex:1;
+  }
+}
+
+.game-header{
+  display:flex;
+  background:var(--primary-light);
+  border-bottom:1px solid var(--primary-medium);
+  height:40px;
+  align-items:center;
+  flex-direction:row;
+  width: 100%;
+}
+
+.right-buttons{
+  margin-left:auto;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.contract{
+  display:flex;
+  flex-direction: column;
+  background:var(--primary-light);
+  padding:10px;
+  margin:5px;
+  & .top-section{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:10px;
+  }
+  & h3{
+    text-align:left;
+    font-weight:500;
+    margin:0;
+    padding:0;
+  }
+  & .param{
+    display:flex;
+    color:var(--primary-dark);
+    border-bottom:1px solid var(--primary-medium);
+    & .title{
+      color:var(--primary-medium);
+      margin-right:auto;
+    }
+  }
+  & .status-row{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    & .title{
+      margin-right:auto;
+    }
+  }
+  & .payment-row{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    & .title{
+      margin-right:auto;
+    }
+    & .condition{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+    }
+  }
+  /*ship item*/
+  & .title{
+    display:flex;
+    justify-content:space-between;
+  }
+  & .description{
+    font-size:14px;
+  }
+}
+
+.search-filters{
+  display:flex;
+  background:#909090;
+  & .long{
+    flex:1;
+  }
+}
+
+.ship-item{
+  background: var(--primary-light);
+  margin:10px;
+  display:flex;
+  padding:12px;
+  gap:5px;
+  flex-direction:column;
+  align-items:flex-start;
+  & .route{
+    font-size:12px;
+    display:flex;
+    & .arrow{
+      width:20px;
+    }
+  }
+  & .props{
+    display:flex;
+    font-size:12px;
+    justify-content:space-between;
+    width:100%;
+  }
+}
